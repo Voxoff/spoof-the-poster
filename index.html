@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="jquery.min.js"></script>
-    <script src="fabric.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.4.0/fabric.js"></script>
     <script src="https://kit.fontawesome.com/2afcbe98dd.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script>
@@ -12,7 +12,7 @@
           selection: false,
         });
 
-        let posterText = new fabric.Text('Get rid of boris', {
+        let posterText = new fabric.IText('Get rid of boris', {
             fontFamily: 'din-heavy',
             left: 50,
             top: 50,
@@ -37,10 +37,17 @@
           posterText.fontSize = posterText.fontSize + 1;
           canvas.renderAll();
         })
+
         document.getElementById('down').addEventListener('click', () => {
           posterText.fontSize = posterText.fontSize - 1;
           canvas.renderAll();
         })
+
+        canvas.on({'mouse:down': () => {
+          console.log('in')
+          a = canvas.getActiveObject()
+          debugger
+        } })
 
         searchbox = document.getElementById('searchbox')
         searchbox.addEventListener('input', () => {
