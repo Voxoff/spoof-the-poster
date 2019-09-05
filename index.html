@@ -8,7 +8,8 @@
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         let canvas = new fabric.Canvas('c', {
-          controlsAboveOverlay: true
+          controlsAboveOverlay: true,
+          selection: false,
         });
 
         let posterText = new fabric.Text('Get rid of boris', {
