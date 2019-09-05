@@ -1,0 +1,52 @@
+
+<html>
+  <head>
+    <script src="jquery.min.js"></script>
+    <script src="fabric.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        let canvas = new fabric.Canvas('c');
+
+         var text = new fabric.Textbox('Lorum ipsum dolor sit amet', {
+            left: 50,
+            top: 50,
+            width: 150,
+            fontSize: 20, 
+          });
+
+        fabric.Image.fromURL('base-image.png', function(image){
+          image.selectable = false;
+          
+          canvas.centerObject(text);
+          canvas.add(text)
+          canvas.add(image)
+
+          canvas.sendToBack(image)
+        })
+
+
+        document.getElementById('up').addEventListener('click', () => {
+          text.fontSize = text.fontSize + 1;
+          canvas.renderAll();  
+        })
+        document.getElementById('down').addEventListener('click', () => {
+          text.fontSize = text.fontSize - 1;
+          canvas.renderAll();  
+        })
+      })
+    </script>
+  </head>
+  <body>
+
+    <!-- <image src="base-image.png" alt=""> -->
+    <canvas id="c" width="1080" height ="500">
+      Your browser does not support the canvas element. We're working on bringing you something!
+    </canvas>
+      <div>Fontsize</div>
+    <div class="buttons">
+      <div id="up" class="button" value="up">Increase</div>
+      <div id="down" class="button" value="down">Decrease</div>
+    </div>
+  </body>
+</html>
