@@ -7,7 +7,9 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        let canvas = new fabric.Canvas('c');
+        let canvas = new fabric.Canvas('c', {
+          controlsAboveOverlay: true
+        });
 
         let posterText = new fabric.Text('Get rid of boris', {
             fontFamily: 'din-heavy',
