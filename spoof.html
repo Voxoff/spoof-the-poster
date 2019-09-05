@@ -1,25 +1,28 @@
-
+<!DOCTYPE html>
 <html>
   <head>
     <script src="jquery.min.js"></script>
     <script src="fabric.js"></script>
+    <script src="https://kit.fontawesome.com/2afcbe98dd.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         let canvas = new fabric.Canvas('c');
 
-         var text = new fabric.Textbox('Lorum ipsum dolor sit amet', {
+        let posterText = new fabric.Text('Get rid of boris', {
+            fontFamily: 'din-heavy',
             left: 50,
             top: 50,
             width: 150,
-            fontSize: 20, 
+            fontSize: 50,
+            fill: '#1a355d',
           });
 
         fabric.Image.fromURL('base-image.png', function(image){
           image.selectable = false;
-          
-          canvas.centerObject(text);
-          canvas.add(text)
+
+          canvas.centerObject(posterText);
+          canvas.add(posterText)
           canvas.add(image)
 
           canvas.sendToBack(image)
@@ -27,26 +30,58 @@
 
 
         document.getElementById('up').addEventListener('click', () => {
-          text.fontSize = text.fontSize + 1;
-          canvas.renderAll();  
+          posterText.fontSize = posterText.fontSize + 1;
+          canvas.renderAll();
         })
         document.getElementById('down').addEventListener('click', () => {
-          text.fontSize = text.fontSize - 1;
-          canvas.renderAll();  
+          posterText.fontSize = posterText.fontSize - 1;
+          canvas.renderAll();
+        })
+
+        searchbox = document.getElementById('searchbox')
+        searchbox.addEventListener('input', () => {
+          posterText.set('text', searchbox.value)
+          horizontalPosition = (canvas.width / 2) - (posterText.width / 2)
+          posterText.set('left', horizontalPosition)
+          canvas.renderAll();
+        })
+
+        let download = document.getElementById('download');
+        download.addEventListener('click', () => {
+          download.setAttribute('download', 'poster.png');
+          download.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"))
         })
       })
     </script>
   </head>
   <body>
 
-    <!-- <image src="base-image.png" alt=""> -->
     <canvas id="c" width="1080" height ="500">
       Your browser does not support the canvas element. We're working on bringing you something!
     </canvas>
-      <div>Fontsize</div>
-    <div class="buttons">
-      <div id="up" class="button" value="up">Increase</div>
-      <div id="down" class="button" value="down">Decrease</div>
+    <div class="flex" id="main-bar">
+      <div id="search" class="flex">
+        <form>
+          <input id="searchbox" type="text" value='Get rid of boris'>
+        </form>
+      </div>
+
+    <!-- <textarea name="" id="textarea" cols="30" rows="3">Get rid of boris</textarea> -->
+      <div id="up" class="button" value="up">Font +</div>
+      <div id="down" class="button" value="down">Font -</div>
+      <a class="button" id="download">Download</a>
     </div>
+
+    <div class="footer">
+      <div class="footer-links">
+        <a href="https://www.instagram.com/ledbydonkeys/?hl=fr"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/ledbydonkeys/"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com/ByDonkeys?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fab fa-twitter"></i></a>
+      </div>
+      <div class="footer-copyright">
+        Made with <i class="fas fa-heart"></i> by Guy Bennett-Jones
+      </div>
+    </div>
+
   </body>
 </html>
