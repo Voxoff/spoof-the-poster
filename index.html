@@ -12,6 +12,8 @@
           selection: false,
         });
 
+        canvas.hoverCursor = "default";
+
         let posterText = new fabric.IText('Get rid of boris', {
             fontFamily: 'din-heavy',
             left: 50,
@@ -19,7 +21,8 @@
             width: 150,
             fontSize: 50,
             fill: '#1a355d',
-            allowTouchScrolling: true
+            allowTouchScrolling: true,
+            hoverCursor: 'move'
           });
 
         fabric.Image.fromURL('base-image.png', function(image){
@@ -44,9 +47,25 @@
         })
 
         canvas.on({'mouse:down': () => {
-          console.log('in')
-          a = canvas.getActiveObject()
+          // Needs to change just the word
+          textbox = canvas.getActiveObject()
+          clickX = event.clientX
+          clickY = event.clientY
+          // e.g. I clicked on G.
+          // clickX = 394
+          // a.left 386
+          count = textbox.left
+          textbox.__charBounds[0].forEach((char, i) => {
+            count + char[0]
+          })
           debugger
+          if (a){
+            if(a.fill == 'red'){
+              a.set('fill', '#1a355d')
+            } else {
+            a.set('fill', 'red')
+          }
+          }
         } })
 
         searchbox = document.getElementById('searchbox')
