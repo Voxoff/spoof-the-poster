@@ -64,7 +64,7 @@
           return index
         }
 
-        let canvas = new fabric.Canvas('c', {
+        let canvas = new fabric.Canvas('canvas', {
           controlsAboveOverlay: true,
           selection: false,
         })
@@ -115,6 +115,7 @@
         searchbox = document.getElementById('searchbox')
         searchbox.addEventListener('input', () => {
           posterText.set('text', searchbox.value)
+
           horizontalPosition = (canvas.width / 2) - (posterText.width / 2)
           posterText.set('left', horizontalPosition)
           canvas.renderAll()
@@ -130,13 +131,15 @@
   </head>
   <body>
 
-    <canvas id="c" width="1080" height ="500">
+    <canvas id="canvas" width="1080" height ="500">
       Your browser does not support the canvas element. We're working on bringing you something!
     </canvas>
     <div class="flex" id="main-bar">
+      <p>Type here: </p>
       <div id="search" class="flex">
         <form>
-          <input id="searchbox" type="text" value='Get rid of boris'>
+          <!-- Small little js hack to move cursor to end of string -->
+          <input id="searchbox" type="text" value='Get rid of boris' autofocus onfocus="let tmp=this.value; this.value=''; this.value=tmp">
         </form>
       </div>
 
@@ -147,9 +150,9 @@
 
     <div class="footer">
       <div class="footer-links">
-        <a href="https://www.instagram.com/ledbydonkeys/?hl=fr"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/ledbydonkeys/"><i class="fab fa-instagram"></i></a>
         <a href="https://www.facebook.com/ledbydonkeys/"><i class="fab fa-facebook"></i></a>
-        <a href="https://twitter.com/ByDonkeys?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fab fa-twitter"></i></a>
+        <a href="https://twitter.com/ByDonkeys"><i class="fab fa-twitter"></i></a>
       </div>
       <div class="footer-copyright">
         Made with <i class="fas fa-heart"></i> by Guy Bennett-Jones

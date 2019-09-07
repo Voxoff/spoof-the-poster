@@ -1,8 +1,14 @@
-body{
-  margin: 0px;
+@font-face {
+  font-family: din-heavy;
+  src: url('din.bold.ttf');
 }
 
-#c{
+body{
+  margin: 0px;
+  height: 100%;
+}
+
+#canvas{
   border: 1px solid #1b365e;
 }
 
@@ -31,7 +37,6 @@ body{
   justify-content: center;
   align-items:center;
   cursor: pointer;
-  // for anchor tags
   text-decoration: none;
 }
 
@@ -42,29 +47,24 @@ body{
 
 #main-bar{
   width: 1080px;
+  min-height: 100%;
+  margin-bottom: 100px;
 }
 
 #textarea{
   margin-right: 10px;
 }
 
-@font-face {
-  font-family: din-heavy;
-  src: url('din.bold.ttf');
-}
-
 a{
   text-decoration: none;
 }
-
 
 a:hover{
   text-decoration: none;
 }
 
-
 #searchbox{
-  width: 200px;
+  width: 350px;
 }
 
 input{
@@ -79,10 +79,13 @@ input:focus, input:active, input:hover{
   border: 2px solid rgba(27, 54, 94, 1);
 }
 
+p {
+  padding: 0 10px;
+}
+
 /*Footer - Credit to Le Wagon*/
 
 .footer {
-  margin-top: 300px;
   background: #F4F4F4;
   display: flex;
   align-items: center;
@@ -109,3 +112,11 @@ input:focus, input:active, input:hover{
   color: #D23333;
 }
 
+/* Fix the footer to the bottom w/o position: fixed
+  https://css-tricks.com/snippets/css/sticky-footer/
+*/
+#main-bar:after {
+  content: "";
+  display: block;
+  height: 100px; 
+}
