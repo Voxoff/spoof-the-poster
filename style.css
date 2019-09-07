@@ -12,6 +12,10 @@ body{
   border: 1px solid #1b365e;
 }
 
+.canvas-container {
+  /*margin: auto;*/
+}
+
 .flex{
   display: flex;
   justify-content: center;
@@ -21,7 +25,7 @@ body{
 .button{
   position: relative;
   width: 120px;
-  height: 30px;
+  height: 40px;
   padding: 0;
   margin: 10px 20px 10px 0;
   font-weight: 600;
@@ -38,6 +42,7 @@ body{
   align-items:center;
   cursor: pointer;
   text-decoration: none;
+  font-family: din-heavy;
 }
 
 .button:hover{
@@ -48,7 +53,7 @@ body{
 #main-bar{
   width: 1080px;
   min-height: 100%;
-  margin-bottom: 100px;
+  /*margin: auto;*/
 }
 
 #textarea{
@@ -65,6 +70,12 @@ a:hover{
 
 #searchbox{
   width: 350px;
+  height: 25px;
+}
+
+#extraline{
+  margin-left:10px;
+  margin-top: 0px;
 }
 
 input{
@@ -73,6 +84,7 @@ input{
   border-radius: 5px;
   -webkit-border-radius: 5px;
   margin-right: 10px;
+  font-size: large;
 }
 
 input:focus, input:active, input:hover{
@@ -81,6 +93,9 @@ input:focus, input:active, input:hover{
 
 p {
   padding: 0 10px;
+  font-family: din-heavy;
+  color: #e2273b;
+  font-size: larger;
 }
 
 /*Footer - Credit to Le Wagon*/

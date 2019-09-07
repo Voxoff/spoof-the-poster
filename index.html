@@ -71,7 +71,7 @@
 
         canvas.hoverCursor = "default"
 
-        let posterText = new fabric.Text('Get rid of boris', {
+        let posterText = new fabric.Text('Get rid of Boris', {
             fontFamily: 'din-heavy',
             left: 50,
             top: 50,
@@ -134,20 +134,22 @@
     <canvas id="canvas" width="1080" height ="500">
       Your browser does not support the canvas element. We're working on bringing you something!
     </canvas>
-    <div class="flex" id="main-bar">
-      <p>Type here: </p>
-      <div id="search" class="flex">
-        <form>
-          <!-- Small little js hack to move cursor to end of string -->
-          <input id="searchbox" type="text" value='Get rid of boris' autofocus onfocus="let tmp=this.value; this.value=''; this.value=tmp">
-        </form>
+    <div id="main-bar">
+      <div class="flex">
+        <p>Type here to change the poster: </p>
+        <div id="search" class="flex">
+          <form>
+            <!-- Small little js hack to move cursor to end of string -->
+            <input id="searchbox" type="text" value='Get rid of Boris' autofocus onfocus="let tmp=this.value; this.value=''; this.value=tmp">
+          </form>
+        </div>
+
+        <div id="up" class="button" value="up">Font +</div>
+        <div id="down" class="button" value="down">Font -</div>
+        <a class="button" id="download">Download</a>
       </div>
-
-      <div id="up" class="button" value="up">Font +</div>
-      <div id="down" class="button" value="down">Font -</div>
-      <a class="button" id="download">Download</a>
+      <!-- <p id="extraline">P.s. Click on the words to change color</p> -->
     </div>
-
     <div class="footer">
       <div class="footer-links">
         <a href="https://www.instagram.com/ledbydonkeys/"><i class="fab fa-instagram"></i></a>
