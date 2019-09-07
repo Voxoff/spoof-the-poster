@@ -52,11 +52,13 @@
         }
 
         function findClickedUponChar(textbox, event) {
-          let count = textbox.left
+          let leftCounter = textbox.left
           let index = -1
-          for (let [i, char] of textbox.__charBounds[0].entries()) {
-            count = count + char.width
-            if (count > event.clientX) {
+          let xClickforCanvas = event.clientX - document.querySelector('.canvas-container').offsetLeft
+          let arr = textbox.__charBounds[0]
+          for (i = 0; i < arr.length; i++) {
+            leftCounter = leftCounter + arr[i].width
+            if (leftCounter > xClickforCanvas) {
               index = i
               break
             }
@@ -107,7 +109,6 @@
           index = findClickedUponChar(textbox, event)
           let [startIndex, endIndex] = findWordFromSpaces(index, textbox._text)          
           setColor(textbox, startIndex, endIndex)
-  
           canvas.renderAll()
           } 
         })
@@ -148,7 +149,7 @@
         <div id="down" class="button" value="down">Font -</div>
         <a class="button" id="download">Download</a>
       </div>
-      <!-- <p id="extraline">P.s. Click on the words to change color</p> -->
+      <!-- <p id="extraline">   P.s. Click on the words to change color</p> -->
     </div>
     <div class="footer">
       <div class="footer-links">
