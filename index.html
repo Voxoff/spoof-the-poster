@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.4.0/fabric.js"></script>
@@ -33,7 +33,7 @@
 
         function setColor(textbox, startIndex, endIndex) {
           let red = '#e2273b'
-          let blue = '#1b365e' 
+          let blue = '#1b365e'
           if (textbox.styles[0] === undefined) textbox.styles[0] = {}
           if (textbox.styles[0][startIndex] === undefined){
             oldColor = blue
@@ -48,7 +48,7 @@
             else {
               delete textbox.styles[0][i]
             }
-          } 
+          }
         }
 
         function findClickedUponChar(textbox, event) {
@@ -64,6 +64,11 @@
             }
           }
           return index
+        }
+
+        function centerText() {
+          horizontalPosition = (canvas.width / 2) - (posterText.width / 2)
+          posterText.set('left', horizontalPosition)
         }
 
         let canvas = new fabric.Canvas('canvas', {
@@ -95,11 +100,13 @@
 
         document.getElementById('up').addEventListener('click', () => {
           posterText.fontSize = posterText.fontSize + 1
+          centerText()
           canvas.renderAll()
         })
 
         document.getElementById('down').addEventListener('click', () => {
           posterText.fontSize = posterText.fontSize - 1
+          centerText()
           canvas.renderAll()
         })
 
@@ -107,18 +114,17 @@
           textbox = canvas.getActiveObject()
 
           index = findClickedUponChar(textbox, event)
-          let [startIndex, endIndex] = findWordFromSpaces(index, textbox._text)          
+          let [startIndex, endIndex] = findWordFromSpaces(index, textbox._text)
           setColor(textbox, startIndex, endIndex)
           canvas.renderAll()
-          } 
+          }
         })
 
         searchbox = document.getElementById('searchbox')
         searchbox.addEventListener('input', () => {
           posterText.set('text', searchbox.value)
 
-          horizontalPosition = (canvas.width / 2) - (posterText.width / 2)
-          posterText.set('left', horizontalPosition)
+          centerText()
           canvas.renderAll()
         })
 
